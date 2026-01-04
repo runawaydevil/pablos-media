@@ -5,9 +5,16 @@ Script para listar todos os filmes de um diretório e exportar para PDF e TXT.
 """
 
 import os
+import sys
 from pathlib import Path
 from datetime import datetime
 from collections import defaultdict
+
+# Configurar encoding UTF-8 para Windows
+if sys.platform == 'win32':
+    import io
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
 
 # Formatos de vídeo suportados
 FORMATOS_VIDEO = {'.mp4', '.mkv', '.avi', '.mov', '.wmv', '.flv', '.webm', '.m4v', '.mpg', '.mpeg', '.3gp', '.ts', '.m2ts'}
@@ -47,12 +54,12 @@ def escanear_filmes(diretorio_base):
                 # Se encontrou vídeos, adiciona à lista
                 if arquivos_video:
                     filmes_por_pasta[nome_pasta] = sorted(arquivos_video)
-                    print(f"  ✓ {nome_pasta}: {len(arquivos_video)} arquivo(s) de vídeo")
+                    print(f"  [OK] {nome_pasta}: {len(arquivos_video)} arquivo(s) de video")
             
             except PermissionError:
-                print(f"  ✗ Erro de permissão ao acessar: {nome_pasta}")
+                print(f"  [ERRO] Erro de permissao ao acessar: {nome_pasta}")
             except Exception as e:
-                print(f"  ✗ Erro ao processar {nome_pasta}: {e}")
+                print(f"  [ERRO] Erro ao processar {nome_pasta}: {e}")
     
     return dict(sorted(filmes_por_pasta.items()))
 
@@ -82,7 +89,7 @@ def exportar_txt(filmes_por_pasta, arquivo_saida='lista_filmes.txt'):
         f.write(f"Total: {len(filmes_por_pasta)} filme(s) listado(s)\n")
         f.write("=" * 80 + "\n")
     
-    print(f"  ✓ Arquivo TXT criado com sucesso!")
+    print(f"  [OK] Arquivo TXT criado com sucesso!")
 
 
 def exportar_pdf(filmes_por_pasta, arquivo_saida='lista_filmes.pdf'):
@@ -170,10 +177,10 @@ def exportar_pdf(filmes_por_pasta, arquivo_saida='lista_filmes.pdf'):
         
         # Gerar PDF
         doc.build(story)
-        print(f"  ✓ Arquivo PDF criado com sucesso!")
+        print(f"  [OK] Arquivo PDF criado com sucesso!")
         
     except ImportError:
-        print("  ✗ Erro: Biblioteca 'reportlab' não instalada.")
+        print("  [ERRO] Erro: Biblioteca 'reportlab' nao instalada.")
         print("  Execute: pip install reportlab")
         raise
 
@@ -191,10 +198,10 @@ def main():
         filmes_por_pasta = escanear_filmes(diretorio_filmes)
         
         if not filmes_por_pasta:
-            print("\n⚠ Nenhum filme encontrado no diretório especificado.")
+            print("\n[AVISO] Nenhum filme encontrado no diretorio especificado.")
             return
         
-        print(f"\n✓ Total de filmes encontrados: {len(filmes_por_pasta)}")
+        print(f"\n[OK] Total de filmes encontrados: {len(filmes_por_pasta)}")
         
         # Exportar para TXT
         exportar_txt(filmes_por_pasta)
@@ -203,16 +210,16 @@ def main():
         try:
             exportar_pdf(filmes_por_pasta)
         except ImportError:
-            print("\n⚠ PDF não foi gerado. Instale reportlab para gerar PDFs.")
+            print("\n[AVISO] PDF nao foi gerado. Instale reportlab para gerar PDFs.")
         
         print("\n" + "=" * 80)
         print("Processo concluído!")
         print("=" * 80)
         
     except FileNotFoundError as e:
-        print(f"\n✗ Erro: {e}")
+        print(f"\n[ERRO] Erro: {e}")
     except Exception as e:
-        print(f"\n✗ Erro inesperado: {e}")
+        print(f"\n[ERRO] Erro inesperado: {e}")
         import traceback
         traceback.print_exc()
 

@@ -5,9 +5,16 @@ Script para listar todas as séries e episódios de um diretório e exportar par
 """
 
 import os
+import sys
 from pathlib import Path
 from datetime import datetime
 from collections import defaultdict
+
+# Configurar encoding UTF-8 para Windows
+if sys.platform == 'win32':
+    import io
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
 
 # Formatos de vídeo suportados
 FORMATOS_VIDEO = {'.mp4', '.mkv', '.avi', '.mov', '.wmv', '.flv', '.webm', '.m4v', '.mpg', '.mpeg', '.3gp', '.ts', '.m2ts'}
@@ -47,12 +54,12 @@ def escanear_series(diretorio_base):
                 # Se encontrou vídeos, adiciona à lista
                 if episodios:
                     series_por_pasta[nome_serie] = sorted(episodios)
-                    print(f"  ✓ {nome_serie}: {len(episodios)} episódio(s)")
+                    print(f"  [OK] {nome_serie}: {len(episodios)} episodio(s)")
             
             except PermissionError:
-                print(f"  ✗ Erro de permissão ao acessar: {nome_serie}")
+                print(f"  [ERRO] Erro de permissao ao acessar: {nome_serie}")
             except Exception as e:
-                print(f"  ✗ Erro ao processar {nome_serie}: {e}")
+                print(f"  [ERRO] Erro ao processar {nome_serie}: {e}")
     
     return dict(sorted(series_por_pasta.items()))
 
@@ -85,7 +92,7 @@ def exportar_txt(series_por_pasta, arquivo_saida='lista_series.txt'):
         f.write(f"Total: {len(series_por_pasta)} série(s) | {total_episodios} episódio(s) listado(s)\n")
         f.write("=" * 80 + "\n")
     
-    print(f"  ✓ Arquivo TXT criado com sucesso!")
+    print(f"  [OK] Arquivo TXT criado com sucesso!")
 
 
 def exportar_pdf(series_por_pasta, arquivo_saida='lista_series.pdf'):
@@ -175,10 +182,10 @@ def exportar_pdf(series_por_pasta, arquivo_saida='lista_series.pdf'):
         
         # Gerar PDF
         doc.build(story)
-        print(f"  ✓ Arquivo PDF criado com sucesso!")
+        print(f"  [OK] Arquivo PDF criado com sucesso!")
         
     except ImportError:
-        print("  ✗ Erro: Biblioteca 'reportlab' não instalada.")
+        print("  [ERRO] Erro: Biblioteca 'reportlab' nao instalada.")
         print("  Execute: pip install reportlab")
         raise
 
@@ -196,12 +203,12 @@ def main():
         series_por_pasta = escanear_series(diretorio_series)
         
         if not series_por_pasta:
-            print("\n⚠ Nenhuma série encontrada no diretório especificado.")
+            print("\n[AVISO] Nenhuma serie encontrada no diretorio especificado.")
             return
         
         total_episodios = sum(len(episodios) for episodios in series_por_pasta.values())
-        print(f"\n✓ Total de séries encontradas: {len(series_por_pasta)}")
-        print(f"✓ Total de episódios: {total_episodios}")
+        print(f"\n[OK] Total de series encontradas: {len(series_por_pasta)}")
+        print(f"[OK] Total de episodios: {total_episodios}")
         
         # Exportar para TXT
         exportar_txt(series_por_pasta)
@@ -210,16 +217,16 @@ def main():
         try:
             exportar_pdf(series_por_pasta)
         except ImportError:
-            print("\n⚠ PDF não foi gerado. Instale reportlab para gerar PDFs.")
+            print("\n[AVISO] PDF nao foi gerado. Instale reportlab para gerar PDFs.")
         
         print("\n" + "=" * 80)
         print("Processo concluído!")
         print("=" * 80)
         
     except FileNotFoundError as e:
-        print(f"\n✗ Erro: {e}")
+        print(f"\n[ERRO] Erro: {e}")
     except Exception as e:
-        print(f"\n✗ Erro inesperado: {e}")
+        print(f"\n[ERRO] Erro inesperado: {e}")
         import traceback
         traceback.print_exc()
 

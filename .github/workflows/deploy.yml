@@ -4,16 +4,6 @@ on:
   push:
     branches:
       - main
-    paths:
-      - 'lista_filmes.txt'
-      - 'lista_series.txt'
-      - 'lista_filmes.pdf'
-      - 'lista_series.pdf'
-      - 'index.html'
-      - 'filmes.html'
-      - 'series.html'
-      - 'style.css'
-      - 'script.js'
   workflow_dispatch:
 
 permissions:

@@ -138,9 +138,30 @@ A lista é organizada por pasta (nome da série), mostrando:
 
 ## 🚀 Configuração do GitHub Pages
 
-1. No repositório GitHub, vá em **Settings** > **Pages**
-2. Selecione a branch **main** como source
-3. O site estará disponível em `https://runawaydevil.github.io/pablos-media/`
+**⚠️ IMPORTANTE:** Se você está vendo erro 404, siga o guia completo: **[SETUP_GITHUB_PAGES.md](SETUP_GITHUB_PAGES.md)**
+
+### Passos Rápidos:
+
+1. **Configurar GitHub Pages:**
+   - Vá em **Settings** > **Pages** no repositório
+   - Selecione **GitHub Actions** como source (NÃO "Deploy from a branch")
+   - Salve
+
+2. **Executar o Workflow:**
+   - Vá em **Actions** > **Deploy GitHub Pages**
+   - Clique em **Run workflow** > **Run workflow**
+   - Aguarde o deploy completar (alguns minutos)
+
+3. **Acessar o site:**
+   - `https://runawaydevil.github.io/pablos-media/`
+
+### GitHub Actions
+
+O workflow `.github/workflows/deploy.yml` está configurado para:
+- Disparar automaticamente em qualquer push para a branch main
+- Validar que todos os arquivos necessários existem
+- Fazer deploy automático para o GitHub Pages
+- Pode ser executado manualmente via **Actions** > **Deploy GitHub Pages** > **Run workflow**
 
 ## 📝 Notas
 
