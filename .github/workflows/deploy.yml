@@ -1,0 +1,83 @@
+name: Deploy GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'lista_filmes.txt'
+      - 'lista_series.txt'
+      - 'lista_filmes.pdf'
+      - 'lista_series.pdf'
+      - 'index.html'
+      - 'filmes.html'
+      - 'series.html'
+      - 'style.css'
+      - 'script.js'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validar arquivos necessários
+        run: |
+          echo "Validando arquivos necessários..."
+          if [ ! -f "lista_filmes.txt" ]; then
+            echo "AVISO: lista_filmes.txt não encontrado"
+          else
+            echo "✓ lista_filmes.txt encontrado"
+            wc -l lista_filmes.txt
+          fi
+          
+          if [ ! -f "lista_series.txt" ]; then
+            echo "AVISO: lista_series.txt não encontrado"
+          else
+            echo "✓ lista_series.txt encontrado"
+            wc -l lista_series.txt
+          fi
+          
+          if [ ! -f "index.html" ]; then
+            echo "ERRO: index.html não encontrado"
+            exit 1
+          fi
+          
+          if [ ! -f "filmes.html" ]; then
+            echo "ERRO: filmes.html não encontrado"
+            exit 1
+          fi
+          
+          if [ ! -f "series.html" ]; then
+            echo "ERRO: series.html não encontrado"
+            exit 1
+          fi
+          
+          echo "✓ Todos os arquivos HTML encontrados"
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
