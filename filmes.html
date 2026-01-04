@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filmes - Filmes e Séries do Pablo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎥 Filmes</h1>
+            <p class="subtitle">Lista completa de filmes</p>
+        </header>
+
+        <nav class="main-nav">
+            <a href="index.html" class="nav-link">Início</a>
+            <a href="filmes.html" class="nav-link active">Filmes</a>
+            <a href="series.html" class="nav-link">Séries</a>
+        </nav>
+
+        <main>
+            <div class="page-header">
+                <a href="lista_filmes.pdf" class="btn-download" target="_blank">📥 Baixar PDF</a>
+            </div>
+
+            <div id="loading" class="loading">
+                <p>Carregando filmes...</p>
+            </div>
+
+            <div id="error" class="error" style="display: none;">
+                <p>Erro ao carregar os filmes. Verifique se o arquivo lista_filmes.txt existe.</p>
+            </div>
+
+            <div id="filmes-container" class="content-container"></div>
+
+            <div id="stats" class="stats" style="display: none;">
+                <p><strong>Total de filmes:</strong> <span id="total-filmes">0</span></p>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 - Filmes e Séries do Pablo</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        loadFilmes();
+    </script>
+</body>
+</html>
+

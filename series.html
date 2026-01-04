@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Séries - Filmes e Séries do Pablo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📺 Séries</h1>
+            <p class="subtitle">Lista completa de séries e episódios</p>
+        </header>
+
+        <nav class="main-nav">
+            <a href="index.html" class="nav-link">Início</a>
+            <a href="filmes.html" class="nav-link">Filmes</a>
+            <a href="series.html" class="nav-link active">Séries</a>
+        </nav>
+
+        <main>
+            <div class="page-header">
+                <a href="lista_series.pdf" class="btn-download" target="_blank">📥 Baixar PDF</a>
+            </div>
+
+            <div id="loading" class="loading">
+                <p>Carregando séries...</p>
+            </div>
+
+            <div id="error" class="error" style="display: none;">
+                <p>Erro ao carregar as séries. Verifique se o arquivo lista_series.txt existe.</p>
+            </div>
+
+            <div id="series-container" class="content-container"></div>
+
+            <div id="stats" class="stats" style="display: none;">
+                <p><strong>Total de séries:</strong> <span id="total-series">0</span></p>
+                <p><strong>Total de episódios:</strong> <span id="total-episodios">0</span></p>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 - Filmes e Séries do Pablo</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        loadSeries();
+    </script>
+</body>
+</html>
+
