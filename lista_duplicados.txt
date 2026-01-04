@@ -1,0 +1,77 @@
+================================================================================
+RELATÓRIO DE ARQUIVOS DUPLICADOS
+================================================================================
+Data de geração: 04/01/2026 18:39:32
+Duplicados por nome: 5
+================================================================================
+
+================================================================================
+DUPLICADOS POR NOME DE ARQUIVO
+================================================================================
+
+1. finis.hominis.1971.wd1080p.memoriadatv.mkv
+--------------------------------------------------------------------------------
+   • Finis Hominis (1971) / Finis.Hominis.1971.WD1080p.MemoriadaTV.mkv
+     Caminho: Y:\Mídia\Filmes\Finis Hominis (1971)\Finis.Hominis.1971.WD1080p.MemoriadaTV.mkv
+     Tamanho: 1.55 GB
+   • 1971 - Finis Hominis / Finis.Hominis.1971.WD1080p.MemoriadaTV.mkv
+     Caminho: Y:\Mídia\Filmes\1971 - Finis Hominis\Finis.Hominis.1971.WD1080p.MemoriadaTV.mkv
+     Tamanho: 1.55 GB
+
+   Total de cópias: 2
+   Espaço desperdiçado: 1.55 GB
+
+2. frankenstein.mp4
+--------------------------------------------------------------------------------
+   • Frankenstein - 1984 / Frankenstein.mp4
+     Caminho: Y:\Mídia\Filmes\Frankenstein - 1984\Frankenstein.mp4
+     Tamanho: 225.79 MB
+   • Frankenstein 2025 / Frankenstein.mp4
+     Caminho: Y:\Mídia\Filmes\Frankenstein 2025\Frankenstein.mp4
+     Tamanho: 5.07 GB
+
+   Total de cópias: 2
+   Espaço desperdiçado: 5.07 GB
+
+3. homem de ferro 3 2013 1080p.mkv
+--------------------------------------------------------------------------------
+   • Homem de Ferro 1 (2008) / Homem de Ferro 3 2013 1080p.mkv
+     Caminho: Y:\Mídia\Filmes\Homem de Ferro 1 (2008)\Homem de Ferro 3 2013 1080p.mkv
+     Tamanho: 1.99 GB
+   • Homem de Ferro 2 (2010) / Homem de Ferro 3 2013 1080p.mkv
+     Caminho: Y:\Mídia\Filmes\Homem de Ferro 2 (2010)\Homem de Ferro 3 2013 1080p.mkv
+     Tamanho: 1.99 GB
+   • Homem de Ferro 3 (2013) / Homem de Ferro 3 2013 1080p.mkv
+     Caminho: Y:\Mídia\Filmes\Homem de Ferro 3 (2013)\Homem de Ferro 3 2013 1080p.mkv
+     Tamanho: 1.99 GB
+
+   Total de cópias: 3
+   Espaço desperdiçado: 3.97 GB
+
+4. o.estranho.mundo.de.ze.do.caixao.68.wd720p.memoriadatv.mkv
+--------------------------------------------------------------------------------
+   • O Estranho Mundo do Zé do Caixão (1968) / O.Estranho.Mundo.de.Ze.do.Caixao.68.WD720p.MemoriadaTV.mkv
+     Caminho: Y:\Mídia\Filmes\O Estranho Mundo do Zé do Caixão (1968)\O.Estranho.Mundo.de.Ze.do.Caixao.68.WD720p.MemoriadaTV.mkv
+     Tamanho: 1.12 GB
+   • 1968 - O Estranho Mundo do Zé do Caixão / O.Estranho.Mundo.de.Ze.do.Caixao.68.WD720p.MemoriadaTV.mkv
+     Caminho: Y:\Mídia\Filmes\1968 - O Estranho Mundo do Zé do Caixão\O.Estranho.Mundo.de.Ze.do.Caixao.68.WD720p.MemoriadaTV.mkv
+     Tamanho: 1.12 GB
+
+   Total de cópias: 2
+   Espaço desperdiçado: 1.12 GB
+
+5. predador 2 a caçada continua 1990 1080p.mkv
+--------------------------------------------------------------------------------
+   • O Predador (1987) / Predador 2 A Caçada Continua 1990 1080p.mkv
+     Caminho: Y:\Mídia\Filmes\O Predador (1987)\Predador 2 A Caçada Continua 1990 1080p.mkv
+     Tamanho: 2.18 GB
+   • Predador 2 A Caçada Continua (1990) / Predador 2 A Caçada Continua 1990 1080p.mkv
+     Caminho: Y:\Mídia\Filmes\Predador 2 A Caçada Continua (1990)\Predador 2 A Caçada Continua 1990 1080p.mkv
+     Tamanho: 2.18 GB
+
+   Total de cópias: 2
+   Espaço desperdiçado: 2.18 GB
+
+================================================================================
+FIM DO RELATÓRIO
+================================================================================

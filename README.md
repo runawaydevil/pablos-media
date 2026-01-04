@@ -57,7 +57,7 @@ O GitHub Pages atualizará automaticamente o site após o push.
 
 ## 📝 Scripts Python
 
-Scripts Python para listar filmes e séries de diretórios e exportar para arquivos PDF e TXT.
+Scripts Python para listar filmes e séries de diretórios, encontrar duplicados e exportar para arquivos PDF e TXT.
 
 ## Requisitos
 
@@ -99,11 +99,70 @@ O script irá:
 3. Gerar `lista_series.txt` com a lista formatada
 4. Gerar `lista_series.pdf` com a lista formatada em PDF (compacto)
 
+### Encontrar Arquivos Duplicados
+
+Execute o script:
+```bash
+python find_duplicados.py
+```
+
+O script irá:
+1. Escanear os diretórios `Y:\Mídia\Filmes` e `Y:\Mídia\TV`
+2. Identificar arquivos duplicados por **nome** (mesmo nome de arquivo)
+3. Identificar arquivos duplicados por **conteúdo** (mesmo hash MD5)
+4. Calcular o espaço desperdiçado por duplicatas
+5. Gerar `lista_duplicados.txt` com relatório detalhado
+6. Gerar `lista_duplicados.csv` com dados estruturados (caminhos completos, tamanhos, etc.)
+7. Gerar `lista_duplicados.pdf` com relatório em PDF (compacto)
+
+**Nota:** O cálculo de hash MD5 pode levar alguns minutos dependendo da quantidade de arquivos. O script mostra o progresso durante o processamento.
+
+**CSV:** O arquivo CSV contém todas as informações dos duplicados em formato tabular, incluindo:
+- Tipo de duplicado (por nome ou por conteúdo)
+- Grupo de duplicados
+- Nome do arquivo
+- Caminho completo
+- Pasta
+- Tamanho em bytes e formatado
+- Hash MD5 (para duplicados por conteúdo)
+- Total de cópias no grupo
+
 ## Formatos de Vídeo Suportados
 
-Os scripts identificam os seguintes formatos:
-- .mp4, .mkv, .avi, .mov, .wmv, .flv, .webm, .m4v
-- .mpg, .mpeg, .3gp, .ts, .m2ts
+Os scripts identificam uma ampla gama de formatos de vídeo, incluindo:
+
+**Formatos Comuns:**
+- MPEG: `.mp4`, `.m4v`, `.mpg`, `.mpeg`, `.m1v`, `.m2v`, `.mpv`, `.mpv2`, `.mp4v`
+- AVI/DivX: `.avi`, `.divx`, `.xvid`
+- Matroska: `.mkv`, `.mk3d`, `.mka`
+- QuickTime: `.mov`, `.qt`
+- Windows Media: `.wmv`, `.wmvhd`, `.asf`
+- Flash: `.flv`, `.f4v`, `.swf`
+- Web: `.webm`, `.ogv`, `.ogm`
+
+**Formatos de Transmissão/Streaming:**
+- `.ts`, `.m2ts`, `.mts`, `.trp`, `.tp`
+
+**Formatos de Disco:**
+- `.vob`, `.vro`, `.dat`, `.bik`, `.smk`
+
+**Formatos de Gravação:**
+- `.dvr-ms`, `.wtv`, `.pvr`
+
+**Formatos de Celular:**
+- `.3gp`, `.3g2`, `.amv`, `.dmv`
+
+**Formatos de Codec Específicos:**
+- `.h264`, `.h265`, `.hevc`, `.264`, `.265`, `.avc`, `.vc1`, `.vp8`, `.vp9`, `.av1`
+
+**Outros Formatos:**
+- RealMedia: `.rm`, `.rmvb`, `.ra`, `.ram`, `.rv`
+- Microsoft: `.mxf`, `.wv`
+- Vídeo bruto: `.yuv`, `.y4m`, `.raw`, `.ycbcr`, `.rgb`, `.rgba`
+- Container: `.nut`
+- Diversos: `.nsv`, `.roq`, `.svi`, `.uvu`, `.viv`, `.xesc`, `.gifv`
+
+**Total:** Mais de 70 formatos de vídeo suportados!
 
 ## Estrutura de Saída
 
@@ -130,6 +189,7 @@ A lista é organizada por pasta (nome da série), mostrando:
 ├── script.js           # JavaScript para processar TXT
 ├── list_filmes.py      # Script para listar filmes (roda localmente)
 ├── list_series.py      # Script para listar séries (roda localmente)
+├── find_duplicados.py  # Script para encontrar arquivos duplicados (roda localmente)
 ├── update_site.bat     # Script para atualizar site (Windows)
 ├── update_site.sh      # Script para atualizar site (Linux/Mac)
 ├── requirements.txt    # Dependências Python
@@ -165,7 +225,7 @@ O workflow `.github/workflows/deploy.yml` está configurado para:
 
 ## 📝 Notas
 
-- **Scripts rodam localmente**: Os scripts Python (`list_filmes.py` e `list_series.py`) devem ser executados na sua máquina local
+- **Scripts rodam localmente**: Os scripts Python (`list_filmes.py`, `list_series.py` e `find_duplicados.py`) devem ser executados na sua máquina local
 - **Apenas resultados no GitHub**: Apenas os arquivos TXT e PDF gerados são enviados para o repositório
 - Os scripts usam o nome da pasta como nome do filme/série
 - Apenas arquivos de vídeo são listados (legendas e outros arquivos são ignorados)
@@ -173,4 +233,5 @@ O workflow `.github/workflows/deploy.yml` está configurado para:
 - Os PDFs são gerados em formato compacto para economizar espaço
 - O site lê os arquivos TXT via JavaScript (fetch API)
 - Os arquivos TXT e PDF devem estar no repositório para o site funcionar
+- O script `find_duplicados.py` detecta duplicados por nome e por conteúdo (hash MD5), calculando também o espaço desperdiçado
 

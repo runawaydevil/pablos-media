@@ -16,8 +16,43 @@ if sys.platform == 'win32':
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
     sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
 
-# Formatos de vídeo suportados
-FORMATOS_VIDEO = {'.mp4', '.mkv', '.avi', '.mov', '.wmv', '.flv', '.webm', '.m4v', '.mpg', '.mpeg', '.3gp', '.ts', '.m2ts'}
+# Formatos de vídeo suportados (lista completa)
+FORMATOS_VIDEO = {
+    # Formatos MPEG
+    '.mp4', '.m4v', '.mpg', '.mpeg', '.m1v', '.m2v', '.mpv', '.mpv2', '.mp4v',
+    # Formatos AVI e DivX
+    '.avi', '.divx', '.xvid',
+    # Formatos Matroska
+    '.mkv', '.mk3d', '.mka',
+    # Formatos QuickTime/Apple
+    '.mov', '.qt',
+    # Formatos Windows Media
+    '.wmv', '.wmvhd', '.asf',
+    # Formatos Flash
+    '.flv', '.f4v', '.swf',
+    # Formatos Web
+    '.webm', '.ogv', '.ogm',
+    # Formatos RealMedia
+    '.rm', '.rmvb', '.ra', '.ram', '.rv',
+    # Formatos de transmissão/streaming
+    '.ts', '.m2ts', '.mts', '.trp', '.tp',
+    # Formatos de vídeo bruto
+    '.yuv', '.y4m', '.raw', '.ycbcr', '.rgb', '.rgba',
+    # Formatos de container
+    '.nut',
+    # Formatos de disco
+    '.vob', '.vro', '.dat', '.bik', '.smk',
+    # Formatos de gravação
+    '.dvr-ms', '.wtv', '.pvr',
+    # Formatos de celular
+    '.3gp', '.3g2', '.amv', '.dmv',
+    # Formatos de codec específicos
+    '.h264', '.h265', '.hevc', '.264', '.265', '.avc', '.vc1', '.vp8', '.vp9', '.av1',
+    # Formatos Microsoft
+    '.mxf', '.wv',
+    # Formatos diversos
+    '.nsv', '.roq', '.svi', '.uvu', '.viv', '.xesc', '.gifv'
+}
 
 
 def is_arquivo_video(arquivo):
